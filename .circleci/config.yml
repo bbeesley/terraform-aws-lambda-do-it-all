@@ -38,6 +38,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - run: apk add --update curl
       - run: curl -Lo ./terraform-docs https://github.com/segmentio/terraform-docs/releases/download/v0.8.2/terraform-docs-v0.8.2-$(uname | tr '[:upper:]' '[:lower:]')-amd64
       - run: chmod +x ./terraform-docs
       - run: |
