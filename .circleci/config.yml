@@ -12,7 +12,7 @@ workflows:
       - tf/validate:
           name: validate
           requires:
-            - build
+            - prep
           filters:
             tags:
               ignore: /.*/
