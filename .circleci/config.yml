@@ -1,32 +1,16 @@
 version: 2.1
-orbs:
-  tf: ngs/terraform@0.0.1
 workflows:
   check:
     jobs:
-      - build:
-          name: prep
-          filters:
-            tags:
-              ignore: /.*/
-      - tf/validate:
+      - validate:
           name: validate
-          requires:
-            - prep
-          filters:
-            tags:
-              ignore: /.*/
-      - clean:
-          name: cleanup
-          requires:
-            - validate
           filters:
             tags:
               ignore: /.*/
 jobs:
-  build:
+  validate:
     docker:
-      - image: circleci/node:latest
+      - image: hashicorp/terraform:light
     working_directory: ~/repo
     steps:
       - checkout
@@ -37,19 +21,9 @@ jobs:
               region = "eu-central-1"
             }
             ' > provider.tf
-      - persist_to_workspace:
-          root: ~/repo
-          paths: .
-  clean:
-    docker:
-      - image: zshusers/zsh
-    working_directory: ~/repo
-    steps:
-      - checkout
       - run:
-          name: Add Provider
-          command: |
-            rm provider.tf
-      - persist_to_workspace:
-          root: ~/repo
-          paths: .
+          name: terraform init
+          command: terraform init
+      - run:
+          name: terraform validate
+          command: terraform validate
