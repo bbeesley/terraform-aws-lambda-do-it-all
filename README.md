@@ -9,7 +9,14 @@ Terraform module to provision a lambda with full permissions
 
 ## Introduction
 
-The module provisions the following resources: TBC
+The module provisions the following resources:
+
+* aws_cloudwatch_log_group
+* aws_iam_policy
+* aws_iam_role
+* aws_iam_role_policy_attachment
+* aws_lambda_alias
+* aws_lambda_function
 
 ## Usage
 
@@ -23,7 +30,7 @@ provider "aws" {
   region = var.region
 }
 
-module "config_connect_handler" {
+module "a_lambda_function" {
   source = "../terraform-module-lambda-do-it-all"
 
   name           = "a-little-function"
