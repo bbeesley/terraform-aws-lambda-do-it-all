@@ -49,6 +49,7 @@ variable "timeout" {
 variable "lambda_concurrency" {
   description = "Limit concurrent executions of the lambda fn"
   type        = number
+  default     = null
 }
 
 variable "s3_bucket" {
@@ -63,22 +64,25 @@ variable "s3_key" {
 
 variable "tracing_config_mode" {
   description = "X Ray tracing mode to use"
-  default     = "PassThrough"
+  default     = null
   type        = string
 }
 
 variable "environment_vars" {
-  type = map(string)
+  type    = map(string)
+  default = {}
 }
 
 variable "vpc_subnets" {
   description = "VPC subnets to run the lambda in"
   type        = list(string)
+  default     = null
 }
 
 variable "vpc_security_groups" {
   description = "VPC security groups to apply to the lambda"
   type        = list(string)
+  default     = null
 }
 
 variable "policies" {
@@ -91,3 +95,15 @@ variable "policies" {
   default = []
 }
 
+variable "publish" {
+  description = "Should this be published as a version"
+  type        = bool
+  default     = false
+}
+
+
+variable "alias" {
+  description = "Lambda alias name"
+  type        = string
+  default     = null
+}
