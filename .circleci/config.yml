@@ -72,6 +72,9 @@ jobs:
           name: Discable strict ssh key checking
           command: mkdir -p ~/.ssh && echo -e "Host github.com\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null\n" > ~/.ssh/config
       - run:
+          name: Install dependencies
+          command: npm ci
+      - run:
           name: Publish package
           command: |
             last_commit="$(git log -1 --pretty=%B | cat | grep 'chore(release)')" || true
