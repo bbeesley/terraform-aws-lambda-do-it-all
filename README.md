@@ -1,3 +1,8 @@
+<!--
+Dynamically generated file
+Do not modify
+To edit the contents of this file, modify the header and footer in the templates directory
+-->
 # terraform-aws-lambda-do-it-all
 
 Terraform module to provision a lambda with full permissions
@@ -52,6 +57,12 @@ module "config_connect_handler" {
 }
 ```
 
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | ~> 2.0 |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -83,6 +94,7 @@ module "config_connect_handler" {
 | alias | Name of the lambda function alias |
 | arn | ARN for the lambda function |
 | version | Current version of the lambda function |
+
 
 ## License 
 
