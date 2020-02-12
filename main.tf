@@ -59,6 +59,7 @@ resource "aws_lambda_function" "lambda" {
   s3_bucket                      = var.s3_bucket
   s3_key                         = var.s3_key
   reserved_concurrent_executions = var.lambda_concurrency
+  publish                        = var.publish
 
   environment {
     variables = local.environment
@@ -79,5 +80,18 @@ resource "aws_lambda_function" "lambda" {
       subnet_ids         = var.vpc_subnets
       security_group_ids = var.vpc_security_groups
     }
+  }
+}
+
+resource "aws_lambda_alias" "alias" {
+  for_each = var.alias ? [var.alias] : []
+  name             = each.key
+  description      = "points the trigger to a lambda version"
+  function_name    = aws_lambda_function.lambda.arn
+  function_version = aws_lambda_function.lambda.version
+  lifecycle {
+    ignore_changes = [
+      function_version,
+    ]
   }
 }
