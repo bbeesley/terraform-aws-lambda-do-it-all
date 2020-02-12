@@ -11,11 +11,15 @@ workflows:
               ignore: /.*/
       - tf/validate:
           name: validate
+          requires:
+            - build
           filters:
             tags:
               ignore: /.*/
       - clean:
           name: cleanup
+          requires:
+            - validate
           filters:
             tags:
               ignore: /.*/
