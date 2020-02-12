@@ -7,6 +7,11 @@ workflows:
           filters:
             tags:
               ignore: /.*/
+      - documentation:
+          name: Update documentation
+          filters:
+            tags:
+              ignore: /.*/
 jobs:
   validate:
     docker:
@@ -27,3 +32,21 @@ jobs:
       - run:
           name: terraform validate
           command: terraform validate
+  documentation:
+    docker:
+      - image: hashicorp/terraform:light
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: curl -Lo ./terraform-docs https://github.com/segmentio/terraform-docs/releases/download/v0.8.2/terraform-docs-v0.8.2-$(uname | tr '[:upper:]' '[:lower:]')-amd64
+      - run: chmod +x ./terraform-docs
+      - run: |
+            echo '<!--
+            Dynamically generated file
+            Do not modify
+            To edit the contents of this file, modify the header and footer in the templates directory
+            -->' > README.md
+      - run: cat templates/HEADER.md >> README.md
+      - run: ./terraform-docs markdown table . >> README.md
+      - run: cat templates/FOOTER.md >> README.md
+      - run: cat README.md
