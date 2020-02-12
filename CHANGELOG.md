@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.0.0...1.0.1) (2020-02-12)
+
+
+### Bug Fixes
+
+* **ci:** correct the tag format to match terraform preferred style ([7173b7e](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/7173b7e083f0dd8215ac04584652829c4b56c64e))
+
 # 1.0.0 (2020-02-12)
 
 
