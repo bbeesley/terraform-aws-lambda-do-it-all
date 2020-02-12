@@ -1,21 +1,6 @@
 version: 2.1
 orbs:
-  tf: ngs/terraform@0.0.1workflows:
-  tf:
-    jobs:
-      - tf/validate:
-          name: validate
-      - tf/plan:
-          name: plan
-          requires:
-            - validate
-      - tf/apply:
-          name: apply
-          requires:
-            - plan
-          filters:
-            branches:
-              only: master
+  tf: ngs/terraform@0.0.1
 workflows:
   check:
     jobs:
