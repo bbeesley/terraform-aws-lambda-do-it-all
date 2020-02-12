@@ -1,4 +1,4 @@
-# terraform-module-lambda-do-it-all
+# terraform-aws-lambda-do-it-all
 
 Terraform module to provision a lambda with full permissions
 
@@ -13,14 +13,76 @@ The module provisions the following resources: TBC
 Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://github.com/bbeesley/terraform-module-lambda-do-it-all/releases).
 
 
-
-TODO: Add example
-
 ```hcl
-  provider "aws" {
-    region = var.region
+provider "aws" {
+  region = var.region
+}
+
+module "config_connect_handler" {
+  source = "../terraform-module-lambda-do-it-all"
+
+  name           = "a-little-function"
+  aws_region     = "eu-central-1"
+  aws_profile    = "55555555555"
+  tags           = {
+    URL = "http://example.com"
   }
+  handler        = "packages/a-little-function/dist/handler.go"
+  lambda_runtime = "nodejs12.x"
+  timeout        = 60
+  s3_bucket      = "55555555555-lambda-artefacts"
+  s3_key         = "a-little-function-1.3.2"
+  environment_vars = {
+    ENVIRONMENT = "staging"
+  }
+  policies = [
+    {
+      Action = [
+        "dynamodb:DescribeTable",
+        "dynamodb:PutItem",
+        "dynamodb:DeleteItem"
+      ]
+      Resource = [
+        "my-little-table",
+        "my-little-table/*"
+      ]
+      Effect = "Allow"
+    }
+  ]
+}
 ```
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:-----:|
+| alias | Lambda alias name | `string` | n/a | yes |
+| aws\_profile | The account profile to deploy the lamnda function within | `string` | n/a | yes |
+| aws\_region | The region in which to deploy the lambda function | `string` | n/a | yes |
+| environment\_vars | n/a | `map(string)` | `{}` | no |
+| handler | Path to the lambda handler | `string` | n/a | yes |
+| lambda\_concurrency | Limit concurrent executions of the lambda fn | `number` | n/a | yes |
+| lambda\_runtime | Runtime to invoke the lambda with | `string` | n/a | yes |
+| log\_retention | Time in days to retain logs for | `number` | `3` | no |
+| memory\_size | Memory allocation for the lambda function | `number` | `1024` | no |
+| name | The name to give to the lambda function | `string` | n/a | yes |
+| policies | List of objects defining IAM policy statements | <pre>list(object({<br>    Action   = list(string)<br>    Resource = list(string)<br>    Effect   = string<br>  }))</pre> | `[]` | no |
+| publish | Should this be published as a version | `bool` | `false` | no |
+| s3\_bucket | The S3 bucket your lambda artifact is stored in | `string` | n/a | yes |
+| s3\_key | The name of the lambda artifact in the bucket | `string` | n/a | yes |
+| tags | Tags to attach to all resources | `map(string)` | n/a | yes |
+| timeout | Function timeout, execution gets cancelled after this many seconds | `number` | `60` | no |
+| tracing\_config\_mode | X Ray tracing mode to use | `string` | n/a | yes |
+| vpc\_security\_groups | VPC security groups to apply to the lambda | `list(string)` | n/a | yes |
+| vpc\_subnets | VPC subnets to run the lambda in | `list(string)` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| alias | Name of the lambda function alias |
+| arn | ARN for the lambda function |
+| version | Current version of the lambda function |
 
 ## License 
 
