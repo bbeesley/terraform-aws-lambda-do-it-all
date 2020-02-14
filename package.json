@@ -84,7 +84,7 @@
     "@semantic-release/release-notes-generator": "^9.0.0",
     "conventional-changelog-angular": "^5.0.6",
     "cz-conventional-changelog": "^3.0.2",
-    "husky": "^4.2.1",
+    "husky": "^4.2.3",
     "semantic-release": "^17.0.3"
   }
 }
