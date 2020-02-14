@@ -85,6 +85,6 @@
     "conventional-changelog-angular": "^5.0.6",
     "cz-conventional-changelog": "^3.0.2",
     "husky": "^4.2.1",
-    "semantic-release": "^17.0.2"
+    "semantic-release": "^17.0.3"
   }
 }
