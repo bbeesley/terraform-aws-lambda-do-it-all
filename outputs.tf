@@ -3,6 +3,11 @@ output "arn" {
   value = aws_lambda_function.lambda.arn
 }
 
+output "name" {
+  description = "The lambda function name"
+  value = var.name
+}
+
 output "alias" {
   description = "Name of the lambda function alias"
   value = var.alias == null ? null : aws_lambda_alias.alias[var.alias].name
