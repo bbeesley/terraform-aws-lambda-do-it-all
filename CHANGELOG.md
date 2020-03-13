@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.0.2...1.0.3) (2020-03-13)
+
+
+### Bug Fixes
+
+* **tf:** ensure log group is created before lambda ([611b1a8](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/611b1a85629f6ea9a447ef00c89d9747e6241fd3))
+
 ## [1.0.2](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.0.1...1.0.2) (2020-02-12)
 
 ## [1.0.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.0.0...1.0.1) (2020-02-12)
