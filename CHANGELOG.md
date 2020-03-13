@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.1.0...1.2.0) (2020-03-13)
+
+
+### Features
+
+* output lambda function name ([c828139](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/c828139ae56ad1e36b140b5a79ef3e714ea54f32))
+
 # [1.1.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.0.3...1.1.0) (2020-03-13)
 
 

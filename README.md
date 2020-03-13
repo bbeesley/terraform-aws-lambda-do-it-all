@@ -100,6 +100,7 @@ module "a_lambda_function" {
 |------|-------------|
 | alias | Name of the lambda function alias |
 | arn | ARN for the lambda function |
+| name | The lambda function name |
 | role | Name of the lambda role |
 | version | Current version of the lambda function |
 
