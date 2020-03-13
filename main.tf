@@ -61,6 +61,8 @@ resource "aws_lambda_function" "lambda" {
   reserved_concurrent_executions = var.lambda_concurrency
   publish                        = var.publish
 
+  depends_on = [aws_cloudwatch_log_group.lambda]
+
   environment {
     variables = local.environment
   }
