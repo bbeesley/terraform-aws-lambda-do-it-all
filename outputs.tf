@@ -13,3 +13,7 @@ output "version" {
   value = aws_lambda_function.lambda.version
 }
 
+output "role" {
+  description = "Name of the lambda role"
+  value = aws_iam_role.lambda_role.name
+}
