@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.0.3...1.1.0) (2020-03-13)
+
+
+### Features
+
+* output lambda role name ([7cce29e](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/7cce29e584702b695ba85af4a90e304e1dd19089))
+
 ## [1.0.3](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.0.2...1.0.3) (2020-03-13)
 
 
