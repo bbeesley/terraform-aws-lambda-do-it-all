@@ -4,6 +4,7 @@
   "description": "Terraform module to provision a lambda with full permissions",
   "main": "index.js",
   "scripts": {
+    "dependabump": "ncu -u && rm -rf package-lock.json node_modules | true && npm i",
     "release": "semantic-release --debug"
   },
   "repository": {
@@ -74,8 +75,8 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/git": "^9.0.0",
@@ -83,8 +84,9 @@
     "@semantic-release/npm": "^7.0.5",
     "@semantic-release/release-notes-generator": "^9.0.1",
     "conventional-changelog-angular": "^5.0.6",
-    "cz-conventional-changelog": "^3.0.2",
+    "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.3",
+    "npm-check-updates": "^4.0.5",
     "semantic-release": "^17.0.4"
   }
 }
