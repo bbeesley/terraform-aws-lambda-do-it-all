@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.2.0...1.3.0) (2020-03-25)
+
+
+### Features
+
+* add support for dlq target config ([38e6505](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/38e6505ceb01999715e8ed2b064bdd7687dc138b))
+
 # [1.2.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.1.0...1.2.0) (2020-03-13)
 
 

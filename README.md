@@ -77,6 +77,8 @@ module "a_lambda_function" {
 | alias | Lambda alias name | `string` | n/a | yes |
 | aws\_profile | The account profile to deploy the lamnda function within | `string` | n/a | yes |
 | aws\_region | The region in which to deploy the lambda function | `string` | n/a | yes |
+| dead\_letter\_target | Target ARN for an SQS queue or SNS topic to notify on failed invocations | `string` | n/a | yes |
+| dead\_letter\_target\_type | The type of the dlq target, must be 'SNS' or 'SQS' | `string` | n/a | yes |
 | environment\_vars | n/a | `map(string)` | `{}` | no |
 | handler | Path to the lambda handler | `string` | n/a | yes |
 | lambda\_concurrency | Limit concurrent executions of the lambda fn | `number` | n/a | yes |
