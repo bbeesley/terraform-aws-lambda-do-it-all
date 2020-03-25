@@ -107,3 +107,15 @@ variable "alias" {
   type        = string
   default     = null
 }
+
+variable "dead_letter_target" {
+  description = "Target ARN for an SQS queue or SNS topic to notify on failed invocations"
+  type        = string
+  default     = null
+}
+
+variable "dead_letter_target_type" {
+  description = "The type of the dlq target, must be 'SNS' or 'SQS'"
+  type        = string
+  default     = null
+}

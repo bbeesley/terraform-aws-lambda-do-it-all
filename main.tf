@@ -26,7 +26,7 @@ resource "aws_iam_policy" "lambda_policy" {
   policy = <<EOF
 {
   "Version": "2012-10-17",
-  "Statement": ${jsonencode(concat(local.logging_policy, var.policies))}
+  "Statement": ${jsonencode(local.policies)}
 }
 EOF
 
@@ -83,10 +83,18 @@ resource "aws_lambda_function" "lambda" {
       security_group_ids = var.vpc_security_groups
     }
   }
+
+  dynamic "dead_letter_config" {
+    for_each = var.dead_letter_target == null ? toset([]) : toset([true])
+
+    content {
+      target_arn = var.dead_letter_target
+    }
+  }
 }
 
 resource "aws_lambda_alias" "alias" {
-  for_each = var.alias == null ? toset([]) : toset([var.alias])
+  for_each         = var.alias == null ? toset([]) : toset([var.alias])
   name             = each.key
   description      = "points the trigger to a lambda version"
   function_name    = aws_lambda_function.lambda.arn
