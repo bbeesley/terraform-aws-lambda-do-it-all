@@ -87,6 +87,6 @@
     "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.5",
     "npm-check-updates": "^4.1.2",
-    "semantic-release": "^17.0.6"
+    "semantic-release": "^17.0.7"
   }
 }
