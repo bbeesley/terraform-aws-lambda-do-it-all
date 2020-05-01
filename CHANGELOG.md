@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.3.0...1.4.0) (2020-05-01)
+
+
+### Features
+
+* extend trust relationships with additional policies ([66191ea](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/66191ea2a50075edd1f41dcc8a767e60dd8bbd15))
+
 # [1.3.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.2.0...1.3.0) (2020-03-25)
 
 

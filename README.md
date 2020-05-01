@@ -74,6 +74,7 @@ module "a_lambda_function" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
+| additional\_assume\_role\_policies | List of objects defining additional non-Lambda IAM trust relationship statements | <pre>list(object({<br>    Action = list(string)<br>    Principal = object({<br>      Service = string<br>    })<br>    Effect = string<br>  }))</pre> | `[]` | no |
 | alias | Lambda alias name | `string` | n/a | yes |
 | aws\_profile | The account profile to deploy the lamnda function within | `string` | n/a | yes |
 | aws\_region | The region in which to deploy the lambda function | `string` | n/a | yes |
