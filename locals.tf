@@ -9,6 +9,19 @@ locals {
     },
   )
 
+  default_assume_role_policy = [
+    {
+      Action = [
+        "sts:AssumeRole"
+      ]
+      Principal = {
+        Service = "lambda.amazonaws.com"
+      }
+      Effect = "Allow"
+      Sid    = ""
+    },
+  ]
+
   logging_policy = [
     {
       Action = [
@@ -32,6 +45,8 @@ locals {
       Effect = "Allow"
     }
   ]
+
+  assume_role_policies = concat(local.default_assume_role_policy, var.additional_assume_role_policies)
 
   policies = var.dead_letter_target == null ? concat(local.logging_policy, var.policies) : concat(local.logging_policy, local.dlq_policy, var.policies)
 }

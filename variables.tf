@@ -85,6 +85,19 @@ variable "vpc_security_groups" {
   default     = null
 }
 
+variable "additional_assume_role_policies" {
+  description = "List of objects defining additional non-Lambda IAM trust relationship statements"
+  type = list(object({
+    Action = list(string)
+    Principal = object({
+      Service = string
+    })
+    Effect = string
+  }))
+  default = []
+}
+
+
 variable "policies" {
   description = "List of objects defining IAM policy statements"
   type = list(object({
