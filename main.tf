@@ -51,6 +51,7 @@ resource "aws_lambda_function" "lambda" {
   s3_key                         = var.s3_key
   reserved_concurrent_executions = var.lambda_concurrency
   publish                        = var.publish
+  layers                         = var.layers
 
   depends_on = [aws_cloudwatch_log_group.lambda]
 

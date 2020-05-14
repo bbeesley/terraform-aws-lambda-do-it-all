@@ -132,3 +132,9 @@ variable "dead_letter_target_type" {
   type        = string
   default     = null
 }
+
+variable "layers" {
+  description = "List of lambda layer ARNs to attach"
+  type        = list(string)
+  default     = []
+}
