@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.4.0...1.5.0) (2020-05-14)
+
+
+### Features
+
+* **layers:** add support for lambda layers ([0d79400](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/0d79400acf70cb2f88bc29aca1a7c5334fd3bf2d))
+
 # [1.4.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.3.0...1.4.0) (2020-05-01)
 
 

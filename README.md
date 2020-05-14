@@ -84,6 +84,7 @@ module "a_lambda_function" {
 | handler | Path to the lambda handler | `string` | n/a | yes |
 | lambda\_concurrency | Limit concurrent executions of the lambda fn | `number` | n/a | yes |
 | lambda\_runtime | Runtime to invoke the lambda with | `string` | n/a | yes |
+| layers | List of lambda layer ARNs to attach | `list(string)` | `[]` | no |
 | log\_retention | Time in days to retain logs for | `number` | `3` | no |
 | memory\_size | Memory allocation for the lambda function | `number` | `1024` | no |
 | name | The name to give to the lambda function | `string` | n/a | yes |
