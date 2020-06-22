@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.5.0...1.6.0) (2020-06-22)
+
+
+### Features
+
+* **iam:** remove resource type from resource name in iam resources ([1619f8f](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/1619f8f2ee7504f733a4f3ec04c7fd7fafb5a341))
+
 # [1.5.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.4.0...1.5.0) (2020-05-14)
 
 
