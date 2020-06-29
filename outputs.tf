@@ -10,7 +10,7 @@ output "name" {
 
 output "alias" {
   description = "Name of the lambda function alias"
-  value = var.alias == null ? null : aws_lambda_alias.alias[var.alias].name
+  value = var.alias
 }
 
 output "version" {
