@@ -138,3 +138,9 @@ variable "layers" {
   type        = list(string)
   default     = []
 }
+
+variable "description" {
+  description = "Description of what the Lambda Function does"
+  type        = string
+  default     = null
+}
