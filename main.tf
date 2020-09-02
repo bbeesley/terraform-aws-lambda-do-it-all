@@ -54,7 +54,11 @@ resource "aws_lambda_function" "lambda" {
   layers                         = var.layers
   description                    = var.description
 
-  depends_on = [aws_cloudwatch_log_group.lambda]
+  depends_on = [
+    aws_cloudwatch_log_group.lambda,
+    aws_iam_role_policy_attachment.lambda_attachment_vpc_exec,
+    aws_iam_role_policy_attachment.lambda_policy_attachment
+  ]
 
   environment {
     variables = local.environment
