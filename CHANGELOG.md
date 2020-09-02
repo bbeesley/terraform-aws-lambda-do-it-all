@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.6.1...1.7.0) (2020-09-02)
+
+
+### Features
+
+* allow custom Lambda descriptions ([cb383de](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/cb383de07dcdb755cc53777b72efdd3448c9c289))
+
 ## [1.6.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.6.0...1.6.1) (2020-06-29)
 
 # [1.6.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.5.0...1.6.0) (2020-06-22)
