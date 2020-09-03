@@ -18,7 +18,6 @@ locals {
         Service = "lambda.amazonaws.com"
       }
       Effect = "Allow"
-      Sid    = ""
     },
   ]
 
