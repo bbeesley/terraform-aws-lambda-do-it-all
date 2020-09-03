@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.7.1...1.8.0) (2020-09-03)
+
+
+### Features
+
+* **iam:** remove AWSLambdaVPCAccessExecutionRole ([eb0febb](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/eb0febbe2027aa32b8e87f91cdab523dc68f1b4a))
+
 ## [1.7.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.7.0...1.7.1) (2020-09-03)
 
 
