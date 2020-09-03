@@ -28,11 +28,6 @@ resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
   policy_arn = aws_iam_policy.lambda_policy.arn
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_attachment_vpc_exec" {
-  role       = aws_iam_role.lambda_role.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
-}
-
 resource "aws_cloudwatch_log_group" "lambda" {
   name              = "/aws/lambda/${var.name}"
   retention_in_days = var.log_retention
@@ -56,7 +51,6 @@ resource "aws_lambda_function" "lambda" {
 
   depends_on = [
     aws_cloudwatch_log_group.lambda,
-    aws_iam_role_policy_attachment.lambda_attachment_vpc_exec,
     aws_iam_role_policy_attachment.lambda_policy_attachment
   ]
 
