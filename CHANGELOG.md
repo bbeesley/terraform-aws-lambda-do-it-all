@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.7.0...1.7.1) (2020-09-03)
+
+
+### Bug Fixes
+
+* define iam role dependency to help with fresh deployment edge case ([ec49359](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/ec4935916c2a57ed76ee07d46e31ae45bfc19312))
+
 # [1.7.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.6.1...1.7.0) (2020-09-02)
 
 
