@@ -33,6 +33,20 @@ locals {
     }
   ]
 
+  vpc_access_policy = [
+    {
+      Effect = "Allow"
+      Action = [
+        "ec2:CreateNetworkInterface",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DeleteNetworkInterface"
+      ],
+      Resource = [
+        "*"
+      ]
+    }
+  ]
+
   dlq_policy = [
     {
       Action = [
@@ -47,5 +61,8 @@ locals {
 
   assume_role_policies = concat(local.default_assume_role_policy, var.additional_assume_role_policies)
 
-  policies = var.dead_letter_target == null ? concat(local.logging_policy, var.policies) : concat(local.logging_policy, local.dlq_policy, var.policies)
+  policies_with_dlq    = var.vpc_subnets == null ? concat(local.logging_policy, local.dlq_policy, var.policies) : concat(local.logging_policy, local.dlq_policy, local.vpc_access_policy, var.policies)
+  policies_without_dlq = var.vpc_subnets == null ? concat(local.logging_policy, var.policies) : concat(local.logging_policy, local.vpc_access_policy, var.policies)
+
+  policies = var.dead_letter_target == null ? local.policies_without_dlq : local.policies_with_dlq
 }

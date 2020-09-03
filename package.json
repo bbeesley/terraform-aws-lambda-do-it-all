@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dependabump": "ncu -u && rm -rf package-lock.json node_modules | true && npm i",
-    "release": "semantic-release --debug"
+    "release": "semantic-release --debug",
+    "pretest": "echo 'provider \"aws\" { region = \"eu-central-1\" }' > provider.tf && terraform fmt -write=true",
+    "test": "terraform init && terraform validate",
+    "posttest": "rm provider.tf"
   },
   "repository": {
     "type": "git",
@@ -71,6 +74,7 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "npm test",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
