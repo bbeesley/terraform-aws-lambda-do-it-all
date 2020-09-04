@@ -24,7 +24,8 @@ locals {
   logging_policy = [
     {
       Action = [
-        "logs:PutLogEvents"
+        "logs:PutLogEvents",
+        "logs:CreateLogStream"
       ]
       Resource = [
         "arn:aws:logs:${var.aws_region}:${var.aws_profile}:log-group:/aws/lambda/${var.name}:*:*"
