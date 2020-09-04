@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.8.0...1.8.1) (2020-09-04)
+
+
+### Bug Fixes
+
+* **iam:** add createLogStream permissions for lambdas ([5481955](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/5481955a82c6e5acf486b8098911e299257bd144))
+
 # [1.8.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.7.1...1.8.0) (2020-09-03)
 
 
