@@ -1,8 +1,8 @@
 <!--
-            Dynamically generated file
-            Do not modify
-            To edit the contents of this file, modify the header and footer in the templates directory
-            -->
+Dynamically generated file
+Do not modify
+To edit the contents of this file, modify the header and footer in the templates directory
+-->
 # terraform-aws-lambda-do-it-all
 
 Terraform module to provision a lambda with full permissions

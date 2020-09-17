@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.8.1...1.9.0) (2020-09-17)
+
+
+### Features
+
+* **outputs:** expose all arn types ([049e614](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/049e6143097e365875aef9f09644ce8114a570a1))
+
 ## [1.8.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.8.0...1.8.1) (2020-09-04)
 
 
