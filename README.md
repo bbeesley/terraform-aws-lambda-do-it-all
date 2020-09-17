@@ -1,8 +1,8 @@
 <!--
-Dynamically generated file
-Do not modify
-To edit the contents of this file, modify the header and footer in the templates directory
--->
+            Dynamically generated file
+            Do not modify
+            To edit the contents of this file, modify the header and footer in the templates directory
+            -->
 # terraform-aws-lambda-do-it-all
 
 Terraform module to provision a lambda with full permissions
@@ -105,7 +105,9 @@ module "a_lambda_function" {
 |------|-------------|
 | alias | Name of the lambda function alias |
 | arn | ARN for the lambda function |
+| invoke\_arn | The ARN to be used for invoking Lambda Function from API Gateway - to be used in aws\_api\_gateway\_integration's uri |
 | name | The lambda function name |
+| qualified\_arn | The ARN identifying your Lambda Function Version |
 | role | Name of the lambda role |
 | version | Current version of the lambda function |
 
