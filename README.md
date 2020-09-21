@@ -68,7 +68,7 @@ module "a_lambda_function" {
 
 | Name | Version |
 |------|---------|
-| aws | ~> 2.0 |
+| aws | >= 2.0 |
 
 ## Inputs
 

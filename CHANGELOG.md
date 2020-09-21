@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.9.0...1.10.0) (2020-09-21)
+
+
+### Features
+
+* **providers:** allow aws provider @ versions >3.0 ([34e7a1f](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/34e7a1f8cac9d49b70f0cdbf9004b54994ea1e8b))
+
 # [1.9.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.8.1...1.9.0) (2020-09-17)
 
 
