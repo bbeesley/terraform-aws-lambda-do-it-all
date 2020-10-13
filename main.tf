@@ -96,3 +96,11 @@ resource "aws_lambda_alias" "alias" {
     ]
   }
 }
+
+resource "aws_lambda_alias" "alias_next" {
+  for_each         = var.alias == null ? toset([]) : toset([var.alias])
+  name             = "${each.key}-next"
+  description      = "points the trigger to a lambda version"
+  function_name    = aws_lambda_function.lambda.arn
+  function_version = aws_lambda_function.lambda.version
+}

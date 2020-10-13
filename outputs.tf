@@ -23,6 +23,11 @@ output "alias" {
   value       = var.alias
 }
 
+output "alias_next" {
+  description = "Name of the next lambda function alias"
+  value       = var.alias ? aws_lambda_alias.alias_next[0].name : var.alias
+}
+
 output "version" {
   description = "Current version of the lambda function"
   value       = aws_lambda_function.lambda.version
