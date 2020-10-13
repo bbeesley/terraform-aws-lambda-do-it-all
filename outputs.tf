@@ -25,7 +25,7 @@ output "alias" {
 
 output "alias_next" {
   description = "Name of the next lambda function alias"
-  value       = var.alias ? aws_lambda_alias.alias_next[0].name : var.alias
+  value       = var.alias == null ? var.alias : aws_lambda_alias.alias_next[var.alias].name
 }
 
 output "version" {
