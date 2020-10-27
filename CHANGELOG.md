@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.10.0...2.0.0) (2020-10-27)
+
+
+### Features
+
+* **tf:** upgrade to tf13 ([b965bca](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/b965bcabea98dad0408bfdd06c8b523a764ba7a2))
+
+
+### BREAKING CHANGES
+
+* **tf:** tf13 provider syntax
+
 # [1.10.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.9.0...1.10.0) (2020-09-21)
 
 
