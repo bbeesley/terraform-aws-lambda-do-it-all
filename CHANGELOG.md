@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.0.0...2.0.1) (2020-12-07)
+
+
+### Bug Fixes
+
+* **tf:** allow overriding of generated lambda role name ([b9f4061](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/b9f40619964ac2d95c1c86f41a86a7a3f14a2727))
+
 # [2.0.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/1.10.0...2.0.0) (2020-10-27)
 
 
