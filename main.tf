@@ -1,5 +1,5 @@
 resource "aws_iam_role" "lambda_role" {
-  name = "${var.name}-lambda-${var.aws_region}"
+  name = local.lambda_role_name
 
   assume_role_policy = <<EOF
 {
@@ -11,7 +11,7 @@ EOF
 }
 
 resource "aws_iam_policy" "lambda_policy" {
-  name        = "${var.name}-lambda-${var.aws_region}"
+  name        = local.lambda_role_name
   description = "IAM Policy for the ${var.name} lambda"
 
   policy = <<EOF

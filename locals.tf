@@ -66,4 +66,7 @@ locals {
   policies_without_dlq = var.vpc_subnets == null ? concat(local.logging_policy, var.policies) : concat(local.logging_policy, local.vpc_access_policy, var.policies)
 
   policies = var.dead_letter_target == null ? local.policies_without_dlq : local.policies_with_dlq
+
+
+  lambda_role_name = var.custom_role_name == "" ? "${var.name}-lambda-${var.aws_region}" : var.custom_role_name
 }

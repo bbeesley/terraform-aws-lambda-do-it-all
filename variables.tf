@@ -144,3 +144,9 @@ variable "description" {
   type        = string
   default     = null
 }
+
+variable "custom_role_name" {
+  description = "Override for the default lambda role name"
+  type = string
+  default = ""
+}
