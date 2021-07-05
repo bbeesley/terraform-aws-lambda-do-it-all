@@ -89,7 +89,7 @@
     "@semantic-release/release-notes-generator": "^9.0.2",
     "conventional-changelog-angular": "^5.0.12",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^4.3.8",
+    "husky": "^7.0.0",
     "npm-check-updates": "^11.5.13",
     "semantic-release": "^17.4.3"
   }
