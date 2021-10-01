@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.0.1...2.1.0) (2021-10-01)
+
+
+### Features
+
+* allow instant updating of lambda alias ([afff87f](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/afff87ff6e8946e58dd196dc45a959357b708b9b))
+
 ## [2.0.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.0.0...2.0.1) (2020-12-07)
 
 

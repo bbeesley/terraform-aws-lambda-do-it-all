@@ -1,8 +1,3 @@
-<!--
-Dynamically generated file
-Do not modify
-To edit the contents of this file, modify the header and footer in the templates directory
--->
 # terraform-aws-lambda-do-it-all
 
 Terraform module to provision a lambda with full permissions
@@ -64,54 +59,77 @@ module "a_lambda_function" {
 }
 ```
 
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 2.0 |
+
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 2.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.61.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_cloudwatch_log_group.lambda](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
+| [aws_iam_policy.lambda_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.lambda_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.lambda_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_lambda_alias.alias_codedeploy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_alias) | resource |
+| [aws_lambda_alias.alias_instant](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_alias) | resource |
+| [aws_lambda_function.lambda](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
-| additional\_assume\_role\_policies | List of objects defining additional non-Lambda IAM trust relationship statements | <pre>list(object({<br>    Action = list(string)<br>    Principal = object({<br>      Service = string<br>    })<br>    Effect = string<br>  }))</pre> | `[]` | no |
-| alias | Lambda alias name | `string` | n/a | yes |
-| aws\_profile | The account profile to deploy the lamnda function within | `string` | n/a | yes |
-| aws\_region | The region in which to deploy the lambda function | `string` | n/a | yes |
-| custom\_role\_name | Override for the default lambda role name | `string` | `""` | no |
-| dead\_letter\_target | Target ARN for an SQS queue or SNS topic to notify on failed invocations | `string` | n/a | yes |
-| dead\_letter\_target\_type | The type of the dlq target, must be 'SNS' or 'SQS' | `string` | n/a | yes |
-| description | Description of what the Lambda Function does | `string` | n/a | yes |
-| environment\_vars | n/a | `map(string)` | `{}` | no |
-| handler | Path to the lambda handler | `string` | n/a | yes |
-| lambda\_concurrency | Limit concurrent executions of the lambda fn | `number` | n/a | yes |
-| lambda\_runtime | Runtime to invoke the lambda with | `string` | n/a | yes |
-| layers | List of lambda layer ARNs to attach | `list(string)` | `[]` | no |
-| log\_retention | Time in days to retain logs for | `number` | `3` | no |
-| memory\_size | Memory allocation for the lambda function | `number` | `1024` | no |
-| name | The name to give to the lambda function | `string` | n/a | yes |
-| policies | List of objects defining IAM policy statements | <pre>list(object({<br>    Action   = list(string)<br>    Resource = list(string)<br>    Effect   = string<br>  }))</pre> | `[]` | no |
-| publish | Should this be published as a version | `bool` | `false` | no |
-| s3\_bucket | The S3 bucket your lambda artifact is stored in | `string` | n/a | yes |
-| s3\_key | The name of the lambda artifact in the bucket | `string` | n/a | yes |
-| tags | Tags to attach to all resources | `map(string)` | n/a | yes |
-| timeout | Function timeout, execution gets cancelled after this many seconds | `number` | `60` | no |
-| tracing\_config\_mode | X Ray tracing mode to use | `string` | n/a | yes |
-| vpc\_security\_groups | VPC security groups to apply to the lambda | `list(string)` | n/a | yes |
-| vpc\_subnets | VPC subnets to run the lambda in | `list(string)` | n/a | yes |
+|------|-------------|------|---------|:--------:|
+| <a name="input_additional_assume_role_policies"></a> [additional\_assume\_role\_policies](#input\_additional\_assume\_role\_policies) | List of objects defining additional non-Lambda IAM trust relationship statements | <pre>list(object({<br>    Action = list(string)<br>    Principal = object({<br>      Service = string<br>    })<br>    Effect = string<br>  }))</pre> | `[]` | no |
+| <a name="input_alias"></a> [alias](#input\_alias) | Lambda alias name | `string` | `null` | no |
+| <a name="input_aws_profile"></a> [aws\_profile](#input\_aws\_profile) | The account profile to deploy the lamnda function within | `string` | n/a | yes |
+| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The region in which to deploy the lambda function | `string` | n/a | yes |
+| <a name="input_custom_role_name"></a> [custom\_role\_name](#input\_custom\_role\_name) | Override for the default lambda role name | `string` | `""` | no |
+| <a name="input_dead_letter_target"></a> [dead\_letter\_target](#input\_dead\_letter\_target) | Target ARN for an SQS queue or SNS topic to notify on failed invocations | `string` | `null` | no |
+| <a name="input_dead_letter_target_type"></a> [dead\_letter\_target\_type](#input\_dead\_letter\_target\_type) | The type of the dlq target, must be 'SNS' or 'SQS' | `string` | `null` | no |
+| <a name="input_description"></a> [description](#input\_description) | Description of what the Lambda Function does | `string` | `null` | no |
+| <a name="input_environment_vars"></a> [environment\_vars](#input\_environment\_vars) | n/a | `map(string)` | `{}` | no |
+| <a name="input_handler"></a> [handler](#input\_handler) | Path to the lambda handler | `string` | n/a | yes |
+| <a name="input_instant_alias_update"></a> [instant\_alias\_update](#input\_instant\_alias\_update) | Whether to immediately point the alias at the latest version | `bool` | `false` | no |
+| <a name="input_lambda_concurrency"></a> [lambda\_concurrency](#input\_lambda\_concurrency) | Limit concurrent executions of the lambda fn | `number` | `null` | no |
+| <a name="input_lambda_runtime"></a> [lambda\_runtime](#input\_lambda\_runtime) | Runtime to invoke the lambda with | `string` | n/a | yes |
+| <a name="input_layers"></a> [layers](#input\_layers) | List of lambda layer ARNs to attach | `list(string)` | `[]` | no |
+| <a name="input_log_retention"></a> [log\_retention](#input\_log\_retention) | Time in days to retain logs for | `number` | `3` | no |
+| <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | Memory allocation for the lambda function | `number` | `1024` | no |
+| <a name="input_name"></a> [name](#input\_name) | The name to give to the lambda function | `string` | n/a | yes |
+| <a name="input_policies"></a> [policies](#input\_policies) | List of objects defining IAM policy statements | <pre>list(object({<br>    Action   = list(string)<br>    Resource = list(string)<br>    Effect   = string<br>  }))</pre> | `[]` | no |
+| <a name="input_publish"></a> [publish](#input\_publish) | Should this be published as a version | `bool` | `false` | no |
+| <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | The S3 bucket your lambda artifact is stored in | `string` | n/a | yes |
+| <a name="input_s3_key"></a> [s3\_key](#input\_s3\_key) | The name of the lambda artifact in the bucket | `string` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | Tags to attach to all resources | `map(string)` | n/a | yes |
+| <a name="input_timeout"></a> [timeout](#input\_timeout) | Function timeout, execution gets cancelled after this many seconds | `number` | `60` | no |
+| <a name="input_tracing_config_mode"></a> [tracing\_config\_mode](#input\_tracing\_config\_mode) | X Ray tracing mode to use | `string` | `null` | no |
+| <a name="input_vpc_security_groups"></a> [vpc\_security\_groups](#input\_vpc\_security\_groups) | VPC security groups to apply to the lambda | `list(string)` | `null` | no |
+| <a name="input_vpc_subnets"></a> [vpc\_subnets](#input\_vpc\_subnets) | VPC subnets to run the lambda in | `list(string)` | `null` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| alias | Name of the lambda function alias |
-| arn | ARN for the lambda function |
-| invoke\_arn | The ARN to be used for invoking Lambda Function from API Gateway - to be used in aws\_api\_gateway\_integration's uri |
-| name | The lambda function name |
-| qualified\_arn | The ARN identifying your Lambda Function Version |
-| role | Name of the lambda role |
-| version | Current version of the lambda function |
-
+| <a name="output_alias"></a> [alias](#output\_alias) | Name of the lambda function alias |
+| <a name="output_arn"></a> [arn](#output\_arn) | ARN for the lambda function |
+| <a name="output_invoke_arn"></a> [invoke\_arn](#output\_invoke\_arn) | The ARN to be used for invoking Lambda Function from API Gateway - to be used in aws\_api\_gateway\_integration's uri |
+| <a name="output_name"></a> [name](#output\_name) | The lambda function name |
+| <a name="output_qualified_arn"></a> [qualified\_arn](#output\_qualified\_arn) | The ARN identifying your Lambda Function Version |
+| <a name="output_role"></a> [role](#output\_role) | Name of the lambda role |
+| <a name="output_version"></a> [version](#output\_version) | Current version of the lambda function |
 
 ## License 
 
