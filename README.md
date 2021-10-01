@@ -1,3 +1,5 @@
+[![build and test](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/actions/workflows/build-and-test.yml)
+
 # terraform-aws-lambda-do-it-all
 
 Terraform module to provision a lambda with full permissions
@@ -84,7 +86,7 @@ No modules.
 | [aws_iam_policy.lambda_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.lambda_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.lambda_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_lambda_alias.alias_codedeploy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_alias) | resource |
+| [aws_lambda_alias.alias](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_alias) | resource |
 | [aws_lambda_alias.alias_instant](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_alias) | resource |
 | [aws_lambda_function.lambda](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function) | resource |
 

@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.1.0...2.1.1) (2021-10-01)
+
+
+### Bug Fixes
+
+* ensure existing aliases are untouched ([d540232](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/d5402326a096f70a06f6ef4dbc867951deb031be))
+
 # [2.1.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.0.1...2.1.0) (2021-10-01)
 
 
