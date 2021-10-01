@@ -4,11 +4,13 @@
   "description": "Terraform module to provision a lambda with full permissions",
   "main": "index.js",
   "scripts": {
-    "dependabump": "ncu -u && rm -rf package-lock.json node_modules | true && npm i",
-    "release": "semantic-release --debug",
     "pretest": "echo 'provider \"aws\" { region = \"eu-central-1\" }' > provider.tf && terraform fmt -write=true",
-    "test": "terraform init && terraform validate",
-    "posttest": "rm provider.tf"
+    "posttest": "rm provider.tf",
+    "dependabump": "ncu -u && rm -rf package-lock.json node_modules || true && npm i",
+    "release": "semantic-release",
+    "readme": "cat templates/HEADER.md > README.md && terraform-docs markdown table . >> README.md && cat templates/FOOTER.md >> README.md && cat README.md",
+    "fmt": "terraform fmt -recursive",
+    "test": "terraform init && terraform validate"
   },
   "repository": {
     "type": "git",

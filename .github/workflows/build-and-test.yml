@@ -1,0 +1,75 @@
+name: build and test
+on:
+  push:
+  pull_request_target:
+    types: [opened, synchronize, edited]
+concurrency: ci-${{ github.ref }}-${{ github.event_name }}
+env:
+  TERRAFORM_VERSION: '0.14.11'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    if: ((github.actor == 'dependabot[bot]' && github.event_name == 'pull_request_target') || (github.actor != 'dependabot[bot]' && github.event_name == 'push'))
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v2
+        if: github.event_name == 'push'
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@v2
+        if: github.event_name == 'pull_request_target'
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.17'
+      - name: setup terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+            terraform_version: ${{ env.TERRAFORM_VERSION }}
+      - name: setup terraform-docs
+        run: |
+          curl -Lo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.15.0/terraform-docs-v0.15.0-$(uname)-amd64.tar.gz
+          tar -xzf terraform-docs.tar.gz
+          chmod +x terraform-docs
+          rm terraform-docs.tar.gz
+          mkdir -p bin
+          mv terraform-docs bin/
+      - name: test
+        run: |
+          npm ci
+          npm test
+      - name: documentation
+        run: |
+          export PATH=$PATH:$(pwd)/bin
+          npm run readme
+      - name: approve-dependabot
+        if: github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PA_TOKEN }}
+        run: |
+          gh pr review --approve || true
+          gh pr merge --auto --rebase || true
+      - name: publish
+        if: github.ref == 'refs/heads/master'
+        env:
+          GH_TOKEN: ${{ secrets.GH_PA_TOKEN }}
+        run: |
+          npm run release
+  lint-commits:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request_target' || (github.ref != 'refs/heads/master' && github.event_name == 'push')
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        if: github.actor != 'dependabot[bot]'
+      - name: install
+        if: github.actor != 'dependabot[bot]'
+        run: npm i --package-lock=false @commitlint/cli @commitlint/config-conventional conventional-commit-types conventional-changelog-angular
+      - name: commitlint
+        if: github.actor != 'dependabot[bot]'
+        run: ./node_modules/.bin/commitlint --from HEAD~${{ github.event.pull_request.commits }} --to HEAD
