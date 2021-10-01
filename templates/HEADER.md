@@ -1,3 +1,5 @@
+[![build and test](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/actions/workflows/build-and-test.yml)
+
 # terraform-aws-lambda-do-it-all
 
 Terraform module to provision a lambda with full permissions
