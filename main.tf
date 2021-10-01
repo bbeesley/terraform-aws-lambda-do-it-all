@@ -84,8 +84,8 @@ resource "aws_lambda_function" "lambda" {
   }
 }
 
-resource "aws_lambda_alias" "alias" {
-  for_each         = var.alias == null ? toset([]) : toset([var.alias])
+resource "aws_lambda_alias" "alias_codedeploy" {
+  for_each         = var.alias != null && var.instant_alias_update == false ? toset([var.alias]) : toset([])
   name             = each.key
   description      = "points the trigger to a lambda version"
   function_name    = aws_lambda_function.lambda.arn
@@ -95,4 +95,12 @@ resource "aws_lambda_alias" "alias" {
       function_version,
     ]
   }
+}
+
+resource "aws_lambda_alias" "alias_instant" {
+  for_each         = var.alias != null && var.instant_alias_update == true ? toset([var.alias]) : toset([])
+  name             = each.key
+  description      = "points the trigger to a lambda version"
+  function_name    = aws_lambda_function.lambda.arn
+  function_version = aws_lambda_function.lambda.version
 }
