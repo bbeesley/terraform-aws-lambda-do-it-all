@@ -121,6 +121,12 @@ variable "alias" {
   default     = null
 }
 
+variable "instant_alias_update" {
+  description = "Whether to immediately point the alias at the latest version"
+  type        = bool
+  default     = false
+}
+
 variable "dead_letter_target" {
   description = "Target ARN for an SQS queue or SNS topic to notify on failed invocations"
   type        = string
@@ -147,6 +153,6 @@ variable "description" {
 
 variable "custom_role_name" {
   description = "Override for the default lambda role name"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
