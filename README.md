@@ -72,7 +72,7 @@ module "a_lambda_function" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.61.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.63.0 |
 
 ## Modules
 
@@ -96,6 +96,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_additional_assume_role_policies"></a> [additional\_assume\_role\_policies](#input\_additional\_assume\_role\_policies) | List of objects defining additional non-Lambda IAM trust relationship statements | <pre>list(object({<br>    Action = list(string)<br>    Principal = object({<br>      Service = string<br>    })<br>    Effect = string<br>  }))</pre> | `[]` | no |
 | <a name="input_alias"></a> [alias](#input\_alias) | Lambda alias name | `string` | `null` | no |
+| <a name="input_architecture"></a> [architecture](#input\_architecture) | The CPU architecture to use | `string` | `"x86_64"` | no |
 | <a name="input_aws_profile"></a> [aws\_profile](#input\_aws\_profile) | The account profile to deploy the lamnda function within | `string` | n/a | yes |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The region in which to deploy the lambda function | `string` | n/a | yes |
 | <a name="input_custom_role_name"></a> [custom\_role\_name](#input\_custom\_role\_name) | Override for the default lambda role name | `string` | `""` | no |

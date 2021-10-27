@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.1.1...2.2.0) (2021-10-27)
+
+
+### Features
+
+* add support for arm64 architecture ([5c2abda](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/5c2abda5f38955b11ea87d6fe2040d2439518baf))
+
 ## [2.1.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.1.0...2.1.1) (2021-10-01)
 
 
