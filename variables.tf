@@ -40,6 +40,15 @@ variable "lambda_runtime" {
   type        = string
 }
 
+variable "architecture" {
+  description = "The CPU architecture to use"
+  default     = "x86_64"
+  validation {
+    condition     = var.architecture == "x86_64" || var.architecture == "arm64"
+    error_message = "The architecture must be either 'x86_64' or 'arm64'."
+  }
+}
+
 variable "timeout" {
   description = "Function timeout, execution gets cancelled after this many seconds"
   type        = number

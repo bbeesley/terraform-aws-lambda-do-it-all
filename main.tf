@@ -40,6 +40,7 @@ resource "aws_lambda_function" "lambda" {
   handler                        = var.handler
   memory_size                    = var.memory_size
   runtime                        = var.lambda_runtime
+  architectures                  = [var.architecture]
   timeout                        = var.timeout
   tags                           = var.tags
   s3_bucket                      = var.s3_bucket
