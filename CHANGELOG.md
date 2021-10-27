@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.2.0...2.2.1) (2021-10-27)
+
+
+### Bug Fixes
+
+* ensure version constraint is valid ([c737dc0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/c737dc0a898f50de62c7f351b837129ec74a30dd))
+
 # [2.2.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.1.1...2.2.0) (2021-10-27)
 
 
