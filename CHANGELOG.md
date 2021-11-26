@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.3.0...2.3.1) (2021-11-26)
+
+
+### Bug Fixes
+
+* ensure the insights layer region map local has the correct architectures values ([a4c7f6a](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/a4c7f6ad204e04a972f6d00bef10c739490e51c5))
+
 # [2.3.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.2.1...2.3.0) (2021-11-26)
 
 
