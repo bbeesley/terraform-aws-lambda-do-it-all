@@ -70,7 +70,7 @@ locals {
   lambda_role_name = var.custom_role_name == "" ? "${var.name}-lambda-${var.aws_region}" : var.custom_role_name
 
   insights_layer_region_map = {
-    "x86-64" = {
+    "x86_64" = {
       "us-east-1"      = "arn:aws:lambda:us-east-1:580247275435:layer:LambdaInsightsExtension:16"
       "eu-central-1"   = "arn:aws:lambda:eu-central-1:580247275435:layer:LambdaInsightsExtension:16"
       "ap-northeast-1" = "arn:aws:lambda:ap-northeast-1:580247275435:layer:LambdaInsightsExtension:23"
