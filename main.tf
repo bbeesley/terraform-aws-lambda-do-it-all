@@ -28,6 +28,12 @@ resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
   policy_arn = aws_iam_policy.lambda_policy.arn
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_insights_policy_attachment" {
+  count      = var.insights_enabled ? 1 : 0
+  role       = aws_iam_role.lambda_role.name
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchLambdaInsightsExecutionRolePolicy"
+}
+
 resource "aws_cloudwatch_log_group" "lambda" {
   name              = "/aws/lambda/${var.name}"
   retention_in_days = var.log_retention
@@ -47,12 +53,13 @@ resource "aws_lambda_function" "lambda" {
   s3_key                         = var.s3_key
   reserved_concurrent_executions = var.lambda_concurrency
   publish                        = var.publish
-  layers                         = var.layers
+  layers                         = local.layers
   description                    = var.description
 
   depends_on = [
     aws_cloudwatch_log_group.lambda,
-    aws_iam_role_policy_attachment.lambda_policy_attachment
+    aws_iam_role_policy_attachment.lambda_policy_attachment,
+    aws_iam_role_policy_attachment.lambda_insights_policy_attachment
   ]
 
   environment {

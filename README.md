@@ -85,6 +85,7 @@ No modules.
 | [aws_cloudwatch_log_group.lambda](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_iam_policy.lambda_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.lambda_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.lambda_insights_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.lambda_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_lambda_alias.alias](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_alias) | resource |
 | [aws_lambda_alias.alias_instant](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_alias) | resource |
@@ -105,6 +106,7 @@ No modules.
 | <a name="input_description"></a> [description](#input\_description) | Description of what the Lambda Function does | `string` | `null` | no |
 | <a name="input_environment_vars"></a> [environment\_vars](#input\_environment\_vars) | n/a | `map(string)` | `{}` | no |
 | <a name="input_handler"></a> [handler](#input\_handler) | Path to the lambda handler | `string` | n/a | yes |
+| <a name="input_insights_enabled"></a> [insights\_enabled](#input\_insights\_enabled) | Turn on Lambda insights for the Lambda (limited regions only) | `bool` | `false` | no |
 | <a name="input_instant_alias_update"></a> [instant\_alias\_update](#input\_instant\_alias\_update) | Whether to immediately point the alias at the latest version | `bool` | `false` | no |
 | <a name="input_lambda_concurrency"></a> [lambda\_concurrency](#input\_lambda\_concurrency) | Limit concurrent executions of the lambda fn | `number` | `null` | no |
 | <a name="input_lambda_runtime"></a> [lambda\_runtime](#input\_lambda\_runtime) | Runtime to invoke the lambda with | `string` | n/a | yes |

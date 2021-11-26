@@ -67,6 +67,20 @@ locals {
 
   policies = var.dead_letter_target == null ? local.policies_without_dlq : local.policies_with_dlq
 
-
   lambda_role_name = var.custom_role_name == "" ? "${var.name}-lambda-${var.aws_region}" : var.custom_role_name
+
+  insights_layer_region_map = {
+    "x86-64" = {
+      "us-east-1"      = "arn:aws:lambda:us-east-1:580247275435:layer:LambdaInsightsExtension:16"
+      "eu-central-1"   = "arn:aws:lambda:eu-central-1:580247275435:layer:LambdaInsightsExtension:16"
+      "ap-northeast-1" = "arn:aws:lambda:ap-northeast-1:580247275435:layer:LambdaInsightsExtension:23"
+    }
+    arm64 = {
+      "us-east-1"      = "arn:aws:lambda:us-east-1:580247275435:layer:LambdaInsightsExtension-Arm64:1"
+      "eu-central-1"   = "arn:aws:lambda:eu-central-1:580247275435:layer:LambdaInsightsExtension-Arm64:1"
+      "ap-northeast-1" = "arn:aws:lambda:ap-northeast-1:580247275435:layer:LambdaInsightsExtension-Arm64:1"
+    }
+  }
+
+  layers = concat(var.layers, var.insights_enabled ? [local.insights_layer_region_map[var.architecture][var.aws_region]] : [])
 }
