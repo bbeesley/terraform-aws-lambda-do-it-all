@@ -165,3 +165,9 @@ variable "custom_role_name" {
   type        = string
   default     = ""
 }
+
+variable "insights_enabled" {
+  description = "Turn on Lambda insights for the Lambda (limited regions only)"
+  type        = bool
+  default     = false
+}
