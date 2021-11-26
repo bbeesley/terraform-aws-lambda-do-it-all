@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.2.1...2.3.0) (2021-11-26)
+
+
+### Features
+
+* add support for lambda insights ([7efe243](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/7efe24386482c7badea23e73c56d34178e60dda2))
+
 ## [2.2.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.2.0...2.2.1) (2021-10-27)
 
 

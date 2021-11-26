@@ -72,7 +72,7 @@ module "a_lambda_function" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.63.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.67.0 |
 
 ## Modules
 
