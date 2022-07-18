@@ -92,7 +92,7 @@
     "conventional-changelog-angular": "^5.0.13",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.1",
-    "npm-check-updates": "^15.2.6",
+    "npm-check-updates": "^15.3.4",
     "semantic-release": "^19.0.3"
   }
 }
