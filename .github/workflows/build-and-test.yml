@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize, edited]
 concurrency: ci-${{ github.ref }}-${{ github.event_name }}
 env:
-  TERRAFORM_VERSION: '0.14.11'
+  TERRAFORM_VERSION: '1.1.3'
 jobs:
   test:
     runs-on: ubuntu-latest
