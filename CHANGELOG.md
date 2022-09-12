@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.3.1...2.4.0) (2022-09-12)
+
+
+### Features
+
+* **tf:** upgrade to terraform 1 ([bde1d31](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/bde1d316a261d3165da919873721621e4bed408c))
+
 ## [2.3.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.3.0...2.3.1) (2021-11-26)
 
 
