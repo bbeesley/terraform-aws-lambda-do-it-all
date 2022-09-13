@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.4.0...2.4.1) (2022-09-13)
+
+
+### Bug Fixes
+
+* remove breaking change published as patch ([017588f](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/017588fff7f42d58a625f62c57c2722119465e5b))
+
 # [2.4.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.3.1...2.4.0) (2022-09-12)
 
 
