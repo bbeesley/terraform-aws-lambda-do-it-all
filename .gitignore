@@ -1,3 +1,5 @@
 .terraform
 node_modules
 provider.tf
+.vscode
+.terraform.lock.hcl

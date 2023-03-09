@@ -1,0 +1,65 @@
+{
+	"name": "Node.js, TypeScript, AWS",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:0-18-bullseye",
+	"features": {
+    "ghcr.io/devcontainers/features/aws-cli:1": {},
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"nstallZsh":	true,
+			"configureZshAsDefaultShell":	true,
+			"installOhMyZsh":	true,
+			"upgradePackages":	true,
+			"nonFreePackages":	true
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/sshd:1": {},
+		"ghcr.io/devcontainers/features/terraform:1": {
+			"installTerraformDocs": true
+		},
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": "gnupg2"
+		},
+		"ghcr.io/dhoeric/features/google-cloud-cli:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-contrib/features/npm-package:1": {
+			"package": "commitizen"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mutantdino.resourcemonitor",
+				"GitHub.vscode-pull-request-github",
+				"redhat.vscode-yaml",
+				"lkrms.inifmt",
+				"wmaurer.change-case",
+				"oouo-diogo-perdigao.docthis",
+				"wayou.vscode-todo-highlight",
+				"yzhang.markdown-all-in-one",
+				"bierner.markdown-checkbox",
+				"tyriar.sort-lines",
+				"drmueller.ts-arrange2",
+				"bierner.github-markdown-preview",
+				"bierner.markdown-preview-github-styles",
+				"codezombiech.gitignore",
+				"ziyasal.vscode-open-in-github",
+				"gioboa.jira-plugin",
+				"rbbit.typescript-hero",
+				"bierner.markdown-footnotes",
+				"samverschueren.linter-xo",
+				"cschlosser.doxdocgen",
+				"nhoizey.gremlins",
+				"mikerhyssmith.ts-barrelr",
+				"quicktype.quicktype",
+				"esbenp.prettier-vscode",
+				"bierner.markdown-mermaid",
+				"dbaeumer.vscode-eslint",
+				"gruntfuggly.todo-tree",
+				"foxundermoon.shell-format",
+				"flesler.url-encode",
+				"eamodio.gitlens",
+				"streetsidesoftware.code-spell-checker"
+			]
+		}
+	}
+}

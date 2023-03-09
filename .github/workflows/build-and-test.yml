@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize, edited]
 concurrency: ci-${{ github.ref }}-${{ github.event_name }}
 env:
-  TERRAFORM_VERSION: '1.1.3'
+  TERRAFORM_VERSION: '1'
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - uses: actions/setup-node@v2
         with:
-          node-version: '14.17'
+          node-version: '18.14.2'
       - name: setup terraform
         uses: hashicorp/setup-terraform@v1
         with:
