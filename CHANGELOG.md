@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/3.0.0...3.0.1) (2023-03-09)
+
+
+### Bug Fixes
+
+* allow all 1.x versions ([19df423](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/19df4235ce37da6def3a37b42ab64d955de47ba1))
+
 # [3.0.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/2.4.1...3.0.0) (2022-09-13)
 
 
