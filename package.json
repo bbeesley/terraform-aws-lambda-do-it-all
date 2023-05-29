@@ -88,7 +88,7 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.1.0",
     "@semantic-release/npm": "^10.0.3",
-    "@semantic-release/release-notes-generator": "^11.0.1",
+    "@semantic-release/release-notes-generator": "^11.0.2",
     "conventional-changelog-angular": "^5.0.13",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
