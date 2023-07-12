@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/3.0.1...4.0.0) (2023-07-12)
+
+
+### Features
+
+* update to v5 of the aws provider ([d15d414](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/d15d4146e36651e093e56d762da9e295e6b1dcc1))
+
+
+### BREAKING CHANGES
+
+* Support dropped for aws provider 4.x
+
 ## [3.0.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/3.0.0...3.0.1) (2023-03-09)
 
 
