@@ -23,3 +23,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PA_TOKEN }}
           MERGE_LABELS: "dependencies,approved"
+          MERGE_METHOD: "rebase"
