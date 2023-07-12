@@ -23,7 +23,7 @@ updates:
       - update-types: ["version-update:semver-major"]
         dependency-name: "*"
   - package-ecosystem: terraform
-    directory: "/terraform"
+    directory: "/"
     schedule:
       interval: daily
       timezone: Europe/London
