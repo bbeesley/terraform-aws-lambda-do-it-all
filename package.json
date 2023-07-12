@@ -24,7 +24,7 @@
   "homepage": "https://github.com/bbeesley/terraform-aws-lambda-do-it-all#readme",
   "release": {
     "branches": [
-      "master"
+      "main"
     ],
     "tagFormat": "${version}",
     "plugins": [

@@ -52,14 +52,13 @@ jobs:
           gh pr review --approve || true
           gh pr merge --auto --rebase || true
       - name: publish
-        if: github.ref == 'refs/heads/master'
         env:
           GH_TOKEN: ${{ secrets.GH_PA_TOKEN }}
         run: |
           npm run release
   lint-commits:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request_target' || (github.ref != 'refs/heads/master' && github.event_name == 'push')
+    if: github.event_name == 'pull_request_target' || (github.ref != 'refs/heads/main' && github.event_name == 'push')
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
