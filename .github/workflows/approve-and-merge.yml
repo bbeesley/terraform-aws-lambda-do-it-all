@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: automerge
-        uses: "pascalgn/automerge-action@v0.13.1"
+        uses: "pascalgn/automerge-action@v0.15.6"
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PA_TOKEN }}
           MERGE_LABELS: "dependencies,approved"
