@@ -10,6 +10,7 @@ updates:
       include: scope
     ignore:
       - update-types: ["version-update:semver-major"]
+        dependency-name: "*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -20,6 +21,7 @@ updates:
       include: scope
     ignore:
       - update-types: ["version-update:semver-major"]
+        dependency-name: "*"
   - package-ecosystem: terraform
     directory: "/terraform"
     schedule:
@@ -31,3 +33,4 @@ updates:
       include: scope
     ignore:
       - update-types: ["version-update:semver-major"]
+        dependency-name: "*"
