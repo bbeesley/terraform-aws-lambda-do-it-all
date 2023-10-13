@@ -28,22 +28,17 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
             terraform_version: ${{ env.TERRAFORM_VERSION }}
-      - name: setup terraform-docs
-        run: |
-          curl -Lo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.15.0/terraform-docs-v0.15.0-$(uname)-amd64.tar.gz
-          tar -xzf terraform-docs.tar.gz
-          chmod +x terraform-docs
-          rm terraform-docs.tar.gz
-          mkdir -p bin
-          mv terraform-docs bin/
       - name: test
         run: |
           npm ci
           npm test
-      - name: documentation
-        run: |
-          export PATH=$PATH:$(pwd)/bin
-          npm run readme
+      - name: update docs
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-push: "false"
       - name: approve-dependabot
         if: github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]'
         env:
