@@ -32,13 +32,6 @@ jobs:
         run: |
           npm ci
           npm test
-      - name: update docs
-        uses: terraform-docs/gh-actions@v0.11.0
-        with:
-          working-dir: .
-          output-file: README.md
-          output-method: inject
-          git-push: "false"
       - name: approve-dependabot
         if: github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]'
         env:
