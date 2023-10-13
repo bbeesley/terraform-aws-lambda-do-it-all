@@ -1,113 +1,120 @@
-[![build and test](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/actions/workflows/build-and-test.yml)
+# terraform-docs
 
-# terraform-aws-lambda-do-it-all
+[![Build Status](https://github.com/terraform-docs/terraform-docs/workflows/ci/badge.svg)](https://github.com/terraform-docs/terraform-docs/actions) [![GoDoc](https://pkg.go.dev/badge/github.com/terraform-docs/terraform-docs)](https://pkg.go.dev/github.com/terraform-docs/terraform-docs) [![Go Report Card](https://goreportcard.com/badge/github.com/terraform-docs/terraform-docs)](https://goreportcard.com/report/github.com/terraform-docs/terraform-docs) [![Codecov Report](https://codecov.io/gh/terraform-docs/terraform-docs/branch/master/graph/badge.svg)](https://codecov.io/gh/terraform-docs/terraform-docs) [![License](https://img.shields.io/github/license/terraform-docs/terraform-docs)](https://github.com/terraform-docs/terraform-docs/blob/master/LICENSE) [![Latest release](https://img.shields.io/github/v/release/terraform-docs/terraform-docs)](https://github.com/terraform-docs/terraform-docs/releases)
 
-Terraform module to provision a lambda with full permissions. All the resources you need to have a running lambda including cloudwatch logging are created for you. The module does support using a VPC, but in that case you'll need to create your own security groups.
+![terraform-docs-teaser](./images/terraform-docs-teaser.png)
 
-## Usage
+Sponsored by [Scalr - Terraform Automation & Collaboration Software](https://scalr.com/?utm_source=terraform-docs)
 
-```hcl
-provider "aws" {
-  region = var.region
-}
+<a href="https://www.scalr.com/?utm_source=terraform-docs" target="_blank"><img src="https://bit.ly/2T7Qm3U" alt="Scalr - Terraform Automation & Collaboration Software" width="175" height="40" /></a>
 
-module "a_lambda_function" {
-  source  = "bbeesley/lambda-do-it-all/aws"
-  version = "~> 4.0"
+## What is terraform-docs
 
-  name           = "a-little-function"
-  aws_region     = "eu-central-1"
-  aws_profile    = "55555555555"
-  tags           = {
-    URL = "http://example.com"
-  }
-  handler        = "packages/a-little-function/dist/handler.go"
-  lambda_runtime = "nodejs12.x"
-  timeout        = 60
-  s3_bucket      = "55555555555-lambda-artefacts"
-  s3_key         = "a-little-function-1.3.2"
-  environment_vars = {
-    ENVIRONMENT = "staging"
-  }
-  policies = [
-    {
-      Action = [
-        "dynamodb:DescribeTable",
-        "dynamodb:PutItem",
-        "dynamodb:DeleteItem"
-      ]
-      Resource = [
-        "my-little-table",
-        "my-little-table/*"
-      ]
-      Effect = "Allow"
-    }
-  ]
-}
+A utility to generate documentation from Terraform modules in various output formats.
+
+## Documentation
+
+- **Users**
+  - Read the [User Guide] to learn how to use terraform-docs
+  - Read the [Formats Guide] to learn about different output formats of terraform-docs
+  - Refer to [Config File Reference] for all the available configuration options
+- **Developers**
+  - Read [Contributing Guide] before submitting a pull request
+
+Visit [our website] for all documentation.
+
+## Installation
+
+The latest version can be installed using `go get`:
+
+```bash
+GO111MODULE="on" go get github.com/terraform-docs/terraform-docs@v0.15.0
 ```
 
-## Usage with a vpc
+**NOTE:** to download any version **before** `v0.9.1` (inclusive) you need to use to
+old module namespace (`segmentio`):
 
-```hcl
-data "aws_vpc" "this" {
-  filter {
-    name   = "tag:Name"
-    values = ["my-vpc-name"]
-  }
-
-  filter {
-    name   = "owner-id"
-    values = [var.aws_profile]
-  }
-}
-
-data "aws_subnets" "private" {
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.this.id]
-  }
-  tags = {
-    Tier = "Private"
-  }
-}
-
-resource "aws_security_group" "this" {
-  name   = "my-lambda"
-  vpc_id = data.aws_vpc.this.id
-}
-
-resource "aws_security_group_rule" "egress" {
-  type              = "egress"
-  security_group_id = aws_security_group.this.id
-  from_port         = 0
-  to_port           = 65535
-  protocol          = -1
-  cidr_blocks       = ["0.0.0.0/0"]
-  description       = "access lambda to everything"
-}
-
-module "my_lambda" {
-  source  = "bbeesley/lambda-do-it-all/aws"
-  version = "~> 4.0"
-
-  name           = "a-little-function"
-  aws_region     = "eu-central-1"
-  aws_profile    = "55555555555"
-  tags           = {
-    URL = "http://example.com"
-  }
-  handler        = "packages/a-little-function/dist/handler.go"
-  lambda_runtime = "nodejs12.x"
-  timeout        = 60
-  s3_bucket      = "55555555555-lambda-artefacts"
-  s3_key         = "a-little-function-1.3.2"
-  environment_vars = {
-    ENVIRONMENT = "staging"
-  }
-  vpc_subnets         = data.aws_subnets.private.ids
-  vpc_security_groups = [aws_security_group.this.id]
-}
+```bash
+# only for v0.9.1 and before
+GO111MODULE="on" go get github.com/segmentio/terraform-docs@v0.9.1
 ```
+
+**NOTE:** please use the latest Go to do this, minimum `go1.16` or greater.
+
+This will put `terraform-docs` in `$(go env GOPATH)/bin`. If you encounter the error
+`terraform-docs: command not found` after installation then you may need to either add
+that directory to your `$PATH` as shown [here] or do a manual installation by cloning
+the repo and run `make build` from the repository which will put `terraform-docs` in:
+
+```bash
+$(go env GOPATH)/src/github.com/terraform-docs/terraform-docs/bin/$(uname | tr '[:upper:]' '[:lower:]')-amd64/terraform-docs
+```
+
+Stable binaries are also available on the [releases] page. To install, download the
+binary for your platform from "Assets" and place this into your `$PATH`:
+
+```bash
+curl -Lo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.15.0/terraform-docs-v0.15.0-$(uname)-amd64.tar.gz
+tar -xzf terraform-docs.tar.gz
+chmod +x terraform-docs
+mv terraform-docs /some-dir-in-your-PATH/terraform-docs
+```
+
+**NOTE:** Windows releases are in `ZIP` format.
+
+If you are a Mac OS X user, you can use [Homebrew]:
+
+```bash
+brew install terraform-docs
+```
+
+or
+
+```bash
+brew install terraform-docs/tap/terraform-docs
+```
+
+Windows users can install using [Scoop]:
+
+```bash
+scoop bucket add terraform-docs https://github.com/terraform-docs/scoop-bucket
+scoop install terraform-docs
+```
+
+or [Chocolatey]:
+
+```bash
+choco install terraform-docs
+```
+
+Alternatively you also can run `terraform-docs` as a container:
+
+```bash
+docker run quay.io/terraform-docs/terraform-docs:0.15.0
+```
+
+**NOTE:** Docker tag `latest` refers to _latest_ stable released version and `edge`
+refers to HEAD of `master` at any given point in time.
+
+## Community
+
+- Discuss terraform-docs on [Slack]
+
+## License
+
+MIT License - Copyright (c) 2021 The terraform-docs Authors.
+
+[User Guide]: ./docs/user-guide/introduction.md
+[Formats Guide]: ./docs/reference/terraform-docs.md
+[Config File Reference]: ./docs/user-guide/configuration.md
+[Contributing Guide]: CONTRIBUTING.md
+[our website]: https://terraform-docs.io/
+[here]: https://golang.org/doc/code.html#GOPATH
+[releases]: https://github.com/terraform-docs/terraform-docs/releases
+[Homebrew]: https://brew.sh
+[Scoop]: https://scoop.sh/
+[Chocolatey]: https://www.chocolatey.org
+[Slack]: https://slack.terraform-docs.io/
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -121,7 +128,7 @@ module "my_lambda" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.7.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.21.0 |
 
 ## Modules
 
@@ -185,30 +192,3 @@ No modules.
 | <a name="output_role"></a> [role](#output\_role) | Name of the lambda role |
 | <a name="output_version"></a> [version](#output\_version) | Current version of the lambda function |
 <!-- END_TF_DOCS -->
-
-## License 
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-The MIT License (MIT)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-Source: <https://opensource.org/licenses/MIT>
-
