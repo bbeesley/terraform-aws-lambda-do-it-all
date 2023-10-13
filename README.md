@@ -2,25 +2,9 @@
 
 # terraform-aws-lambda-do-it-all
 
-Terraform module to provision a lambda with full permissions
-
-## Introduction
-
-The module provisions the following resources:
-
-* aws_cloudwatch_log_group
-* aws_iam_policy
-* aws_iam_role
-* aws_iam_role_policy_attachment
-* aws_lambda_alias
-* aws_lambda_function
+Terraform module to provision a lambda with full permissions. All the resources you need to have a running lambda including cloudwatch logging are created for you. The module does support using a VPC, but in that case you'll need to create your own security groups.
 
 ## Usage
-
-
-**IMPORTANT:** The `main` branch is used in `source` just as an example. In your code, do not pin to `main` because there may be breaking changes between releases.
-Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://github.com/bbeesley/terraform-module-lambda-do-it-all/releases).
-
 
 ```hcl
 provider "aws" {
@@ -28,7 +12,8 @@ provider "aws" {
 }
 
 module "a_lambda_function" {
-  source = "../terraform-module-lambda-do-it-all"
+  source  = "bbeesley/lambda-do-it-all/aws"
+  version = "~> 4.0"
 
   name           = "a-little-function"
   aws_region     = "eu-central-1"
@@ -61,6 +46,70 @@ module "a_lambda_function" {
 }
 ```
 
+## Usage with a vpc
+
+```hcl
+data "aws_vpc" "this" {
+  filter {
+    name   = "tag:Name"
+    values = ["my-vpc-name"]
+  }
+
+  filter {
+    name   = "owner-id"
+    values = [var.aws_profile]
+  }
+}
+
+data "aws_subnets" "private" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.this.id]
+  }
+  tags = {
+    Tier = "Private"
+  }
+}
+
+resource "aws_security_group" "this" {
+  name   = "my-lambda"
+  vpc_id = data.aws_vpc.this.id
+}
+
+resource "aws_security_group_rule" "egress" {
+  type              = "egress"
+  security_group_id = aws_security_group.this.id
+  from_port         = 0
+  to_port           = 65535
+  protocol          = -1
+  cidr_blocks       = ["0.0.0.0/0"]
+  description       = "access lambda to everything"
+}
+
+module "my_lambda" {
+  source  = "bbeesley/lambda-do-it-all/aws"
+  version = "~> 4.0"
+
+  name           = "a-little-function"
+  aws_region     = "eu-central-1"
+  aws_profile    = "55555555555"
+  tags           = {
+    URL = "http://example.com"
+  }
+  handler        = "packages/a-little-function/dist/handler.go"
+  lambda_runtime = "nodejs12.x"
+  timeout        = 60
+  s3_bucket      = "55555555555-lambda-artefacts"
+  s3_key         = "a-little-function-1.3.2"
+  environment_vars = {
+    ENVIRONMENT = "staging"
+  }
+  vpc_subnets         = data.aws_subnets.private.ids
+  vpc_security_groups = [aws_security_group.this.id]
+}
+```
+
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -135,6 +184,7 @@ No modules.
 | <a name="output_qualified_arn"></a> [qualified\_arn](#output\_qualified\_arn) | The ARN identifying your Lambda Function Version |
 | <a name="output_role"></a> [role](#output\_role) | Name of the lambda role |
 | <a name="output_version"></a> [version](#output\_version) | Current version of the lambda function |
+<!-- END_TF_DOCS -->
 
 ## License 
 

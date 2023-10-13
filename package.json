@@ -8,7 +8,7 @@
     "posttest": "rm provider.tf",
     "dependabump": "ncu -u && rm -rf package-lock.json node_modules || true && npm i",
     "release": "semantic-release",
-    "readme": "cat templates/HEADER.md > README.md && terraform-docs markdown table . >> README.md && cat templates/FOOTER.md >> README.md && cat README.md",
+    "readme": "terraform-docs markdown table --output-file README.md --output-mode inject .",
     "fmt": "terraform fmt -recursive",
     "test": "terraform init && terraform validate"
   },
