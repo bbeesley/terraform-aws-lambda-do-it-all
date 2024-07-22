@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/4.1.0...4.1.1) (2024-07-22)
+
+
+### Bug Fixes
+
+* add efs mount permissions ([dc2d7a8](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/dc2d7a8e06438c0587740ad0274f3c661e041f7a))
+
 # [4.1.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/4.0.2...4.1.0) (2024-07-22)
 
 
