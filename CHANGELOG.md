@@ -1,3 +1,10 @@
+## [4.1.2](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/4.1.1...4.1.2) (2024-07-22)
+
+
+### Bug Fixes
+
+* correct release order ([1d8a657](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/1d8a6572773390b7f03e0c275391fa11f349130d))
+
 ## [4.1.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/4.1.0...4.1.1) (2024-07-22)
 
 
