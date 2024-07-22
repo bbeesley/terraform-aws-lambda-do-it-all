@@ -5,6 +5,13 @@
 
 * add support for efs mounts ([3242473](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/3242473689cf295df62883d6325eff882bb980de))
 
+# [4.1.0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/4.0.2...4.1.0) (2024-07-22)
+
+
+### Features
+
+* add support for efs mounts ([3242473](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/3242473689cf295df62883d6325eff882bb980de))
+
 ## [4.0.2](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/4.0.1...4.0.2) (2023-10-13)
 
 ## [4.0.1](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/4.0.0...4.0.1) (2023-10-13)
