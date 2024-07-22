@@ -62,10 +62,22 @@ locals {
 
   assume_role_policies = concat(local.default_assume_role_policy, var.additional_assume_role_policies)
 
+  efs_policies = var.efs_configuration != null ? [
+    {
+      Action = concat(
+        ["elasticfilesystem:ClientMount"],
+      var.efs_configuration.read_only ? [] : ["elasticfilesystem:ClientWrite"])
+      Resource = [
+        data.aws_efs_access_point.this[0].file_system_arn
+      ]
+      Effect = "Allow"
+    }
+  ] : []
+
   policies_with_dlq    = var.vpc_subnets == null ? concat(local.logging_policy, local.dlq_policy, var.policies) : concat(local.logging_policy, local.dlq_policy, local.vpc_access_policy, var.policies)
   policies_without_dlq = var.vpc_subnets == null ? concat(local.logging_policy, var.policies) : concat(local.logging_policy, local.vpc_access_policy, var.policies)
 
-  policies = var.dead_letter_target == null ? local.policies_without_dlq : local.policies_with_dlq
+  policies = concat(var.dead_letter_target == null ? local.policies_without_dlq : local.policies_with_dlq, local.efs_policies)
 
   lambda_role_name = var.custom_role_name == "" ? "${var.name}-lambda-${var.aws_region}" : var.custom_role_name
 
@@ -83,4 +95,8 @@ locals {
   }
 
   layers = concat(var.layers, var.insights_enabled ? [local.insights_layer_region_map[var.architecture][var.aws_region]] : [])
+}
+data "aws_efs_access_point" "this" {
+  count           = var.efs_configuration != null ? 1 : 0
+  access_point_id = var.efs_configuration.access_point_id
 }

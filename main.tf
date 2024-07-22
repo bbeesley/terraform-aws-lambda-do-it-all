@@ -92,7 +92,9 @@ resource "aws_lambda_function" "lambda" {
   }
 
   dynamic "file_system_config" {
-    for_each = var.efs_configuration != null ? { efs = var.efs_configuration } : {}
+    for_each = var.efs_configuration != null ? { efs = merge(var.efs_configuration, {
+      access_point_arn = data.aws_efs_access_point.this[0].arn
+    }) } : {}
 
     content {
       arn              = file_system_config.value.access_point_arn
