@@ -33,7 +33,7 @@ jobs:
           npm ci
           npm test
       - name: update docs
-        uses: terraform-docs/gh-actions@v1.0.0
+        uses: terraform-docs/gh-actions@v1.2.0
         with:
           working-dir: .
           output-file: README.md
