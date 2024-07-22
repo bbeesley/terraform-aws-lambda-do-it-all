@@ -90,6 +90,15 @@ resource "aws_lambda_function" "lambda" {
       target_arn = var.dead_letter_target
     }
   }
+
+  dynamic "file_system_config" {
+    for_each = var.efs_configuration != null ? { efs = var.efs_configuration } : {}
+
+    content {
+      arn              = file_system_config.value.access_point_arn
+      local_mount_path = file_system_config.value.mount_point
+    }
+  }
 }
 
 resource "aws_lambda_alias" "alias" {

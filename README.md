@@ -153,6 +153,7 @@ No modules.
 | <a name="input_dead_letter_target"></a> [dead\_letter\_target](#input\_dead\_letter\_target) | Target ARN for an SQS queue or SNS topic to notify on failed invocations | `string` | `null` | no |
 | <a name="input_dead_letter_target_type"></a> [dead\_letter\_target\_type](#input\_dead\_letter\_target\_type) | The type of the dlq target, must be 'SNS' or 'SQS' | `string` | `null` | no |
 | <a name="input_description"></a> [description](#input\_description) | Description of what the Lambda Function does | `string` | `null` | no |
+| <a name="input_efs_configuration"></a> [efs\_configuration](#input\_efs\_configuration) | Configuration for mounting an EFS file system | <pre>object({<br>    mount_point      = string<br>    access_point_arn = string<br>  })</pre> | `null` | no |
 | <a name="input_environment_vars"></a> [environment\_vars](#input\_environment\_vars) | n/a | `map(string)` | `{}` | no |
 | <a name="input_handler"></a> [handler](#input\_handler) | Path to the lambda handler | `string` | n/a | yes |
 | <a name="input_insights_enabled"></a> [insights\_enabled](#input\_insights\_enabled) | Turn on Lambda insights for the Lambda (limited regions only) | `bool` | `false` | no |
