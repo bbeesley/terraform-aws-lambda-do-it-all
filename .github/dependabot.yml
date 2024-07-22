@@ -19,9 +19,6 @@ updates:
     commit-message:
       prefix: chore
       include: scope
-    ignore:
-      - update-types: ["version-update:semver-major"]
-        dependency-name: "*"
   - package-ecosystem: terraform
     directory: "/"
     schedule:
