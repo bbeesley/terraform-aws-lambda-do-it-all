@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: '18.14.2'
       - name: setup terraform
-        uses: hashicorp/setup-terraform@v1
+        uses: hashicorp/setup-terraform@v3
         with:
             terraform_version: ${{ env.TERRAFORM_VERSION }}
       - name: test
