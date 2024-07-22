@@ -171,3 +171,12 @@ variable "insights_enabled" {
   type        = bool
   default     = false
 }
+
+variable "efs_configuration" {
+  description = "Configuration for mounting an EFS file system"
+  type = object({
+    mount_point      = string
+    access_point_arn = string
+  })
+  default = null
+}
