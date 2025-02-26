@@ -15,7 +15,7 @@ output "invoke_arn" {
 
 output "name" {
   description = "The lambda function name"
-  value       = var.name
+  value       = aws_lambda_function.lambda.function_name
 }
 
 output "alias" {
