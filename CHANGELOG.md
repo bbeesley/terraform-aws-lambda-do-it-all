@@ -1,3 +1,10 @@
+## [4.1.3](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/4.1.2...4.1.3) (2025-02-26)
+
+
+### Bug Fixes
+
+* fix race condition on function name ([71c55f0](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/71c55f00f727efd8ce46c386daf4e8dd539f0152))
+
 ## [4.1.2](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/4.1.1...4.1.2) (2024-07-22)
 
 

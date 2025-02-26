@@ -121,7 +121,7 @@ module "my_lambda" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.59.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.88.0 |
 
 ## Modules
 
@@ -145,7 +145,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_additional_assume_role_policies"></a> [additional\_assume\_role\_policies](#input\_additional\_assume\_role\_policies) | List of objects defining additional non-Lambda IAM trust relationship statements | <pre>list(object({<br>    Action = list(string)<br>    Principal = object({<br>      Service = string<br>    })<br>    Effect = string<br>  }))</pre> | `[]` | no |
+| <a name="input_additional_assume_role_policies"></a> [additional\_assume\_role\_policies](#input\_additional\_assume\_role\_policies) | List of objects defining additional non-Lambda IAM trust relationship statements | <pre>list(object({<br/>    Action = list(string)<br/>    Principal = object({<br/>      Service = string<br/>    })<br/>    Effect = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_alias"></a> [alias](#input\_alias) | Lambda alias name | `string` | `null` | no |
 | <a name="input_architecture"></a> [architecture](#input\_architecture) | The CPU architecture to use | `string` | `"x86_64"` | no |
 | <a name="input_aws_profile"></a> [aws\_profile](#input\_aws\_profile) | The account profile to deploy the lamnda function within | `string` | n/a | yes |
@@ -154,7 +154,7 @@ No modules.
 | <a name="input_dead_letter_target"></a> [dead\_letter\_target](#input\_dead\_letter\_target) | Target ARN for an SQS queue or SNS topic to notify on failed invocations | `string` | `null` | no |
 | <a name="input_dead_letter_target_type"></a> [dead\_letter\_target\_type](#input\_dead\_letter\_target\_type) | The type of the dlq target, must be 'SNS' or 'SQS' | `string` | `null` | no |
 | <a name="input_description"></a> [description](#input\_description) | Description of what the Lambda Function does | `string` | `null` | no |
-| <a name="input_efs_configuration"></a> [efs\_configuration](#input\_efs\_configuration) | Configuration for mounting an EFS file system | <pre>object({<br>    mount_point     = string<br>    access_point_id = string<br>    read_only       = optional(bool, false)<br>  })</pre> | `null` | no |
+| <a name="input_efs_configuration"></a> [efs\_configuration](#input\_efs\_configuration) | Configuration for mounting an EFS file system | <pre>object({<br/>    mount_point     = string<br/>    access_point_id = string<br/>    read_only       = optional(bool, false)<br/>  })</pre> | `null` | no |
 | <a name="input_environment_vars"></a> [environment\_vars](#input\_environment\_vars) | n/a | `map(string)` | `{}` | no |
 | <a name="input_handler"></a> [handler](#input\_handler) | Path to the lambda handler | `string` | n/a | yes |
 | <a name="input_insights_enabled"></a> [insights\_enabled](#input\_insights\_enabled) | Turn on Lambda insights for the Lambda (limited regions only) | `bool` | `false` | no |
@@ -165,7 +165,7 @@ No modules.
 | <a name="input_log_retention"></a> [log\_retention](#input\_log\_retention) | Time in days to retain logs for | `number` | `3` | no |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | Memory allocation for the lambda function | `number` | `1024` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name to give to the lambda function | `string` | n/a | yes |
-| <a name="input_policies"></a> [policies](#input\_policies) | List of objects defining IAM policy statements | <pre>list(object({<br>    Action   = list(string)<br>    Resource = list(string)<br>    Effect   = string<br>  }))</pre> | `[]` | no |
+| <a name="input_policies"></a> [policies](#input\_policies) | List of objects defining IAM policy statements | <pre>list(object({<br/>    Action   = list(string)<br/>    Resource = list(string)<br/>    Effect   = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_publish"></a> [publish](#input\_publish) | Should this be published as a version | `bool` | `false` | no |
 | <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | The S3 bucket your lambda artifact is stored in | `string` | n/a | yes |
 | <a name="input_s3_key"></a> [s3\_key](#input\_s3\_key) | The name of the lambda artifact in the bucket | `string` | n/a | yes |
