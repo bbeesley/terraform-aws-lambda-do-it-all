@@ -1,3 +1,10 @@
+## [4.1.4](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/4.1.3...4.1.4) (2025-06-23)
+
+
+### Bug Fixes
+
+* allow using any aws provider > 5.0 ([51d6c59](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/commit/51d6c590ae89588f25278af028c93aaf6b9962eb))
+
 ## [4.1.3](https://github.com/bbeesley/terraform-aws-lambda-do-it-all/compare/4.1.2...4.1.3) (2025-02-26)
 
 
